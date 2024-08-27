@@ -1,0 +1,10 @@
+package com.proyect.library.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.proyect.library.entity.AuthUser;
+
+public interface AuthServiceRepository extends JpaRepository<AuthUser, int>{
+	
+
+}

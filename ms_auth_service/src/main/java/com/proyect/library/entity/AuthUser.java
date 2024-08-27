@@ -1,0 +1,28 @@
+package com.proyect.library.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
+@Entity
+public class AuthUser {
+	
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "auth_user_seq")
+    @SequenceGenerator(name = "auth_user_seq", sequenceName = "auth_user_seq", allocationSize = 1)
+    private int id;
+    private String username;
+    private String password;
+}

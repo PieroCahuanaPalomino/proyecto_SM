@@ -1,0 +1,5 @@
+package com.proyect.library.service;
+
+public class AuthService {
+
+}
