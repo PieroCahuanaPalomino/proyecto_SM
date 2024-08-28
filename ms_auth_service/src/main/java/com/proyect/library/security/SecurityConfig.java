@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity httpSecurity, AuthenticationManager authenticationManager)
+	public SecurityFilterChain filterChain(HttpSecurity httpSecurity/*, AuthenticationManager authenticationManager*/)
 			throws Exception {
 		
 		return httpSecurity

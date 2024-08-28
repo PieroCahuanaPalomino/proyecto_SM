@@ -1,0 +1,14 @@
+# Eclipse IDE metadata
+.metadata/
+.classpath
+.project
+.settings/
+.externalToolBuilders/
+.factorypath
+
+# Eclipse logs and workspace state
+.metadata/.log
+.metadata/.plugins/org.eclipse.core.resources/.project
+.metadata/.plugins/org.eclipse.e4.workbench/
+.metadata/.plugins/org.eclipse.jdt.core/
+.metadata/.plugins/org.eclipse.m2e.core/

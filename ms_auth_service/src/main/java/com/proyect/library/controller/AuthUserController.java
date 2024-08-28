@@ -17,7 +17,7 @@ import com.proyect.library.service.AuthService;
 @RequestMapping("/auth")
 public class AuthUserController {
 	@Autowired
-	AuthService authService;
+	private AuthService authService;
 
 	@PostMapping("/login")
 	public ResponseEntity<TokenDto> login(@RequestBody AuthUserDto dto){
