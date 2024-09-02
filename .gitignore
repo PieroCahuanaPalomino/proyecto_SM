@@ -12,3 +12,12 @@
 .metadata/.plugins/org.eclipse.e4.workbench/
 .metadata/.plugins/org.eclipse.jdt.core/
 .metadata/.plugins/org.eclipse.m2e.core/
+
+# Ignorar archivos y directorios de Eclipse
+.metadata/
+*.log
+*.snap
+*.index
+*.dat
+*.properties
+*.png
