@@ -10,6 +10,12 @@ spring:
         locator:
           enabled: true
       routes:
+        - id: ms_prueba_seguridad
+          uri: lb://ms_prueba_seguridad
+          predicates:
+            - Path=/prueba/**
+          filters:
+            - AuthFilter
         - id: ms_auth_service
           uri: lb://ms_auth_service
           predicates:

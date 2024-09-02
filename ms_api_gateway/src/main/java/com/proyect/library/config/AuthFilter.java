@@ -33,7 +33,7 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config>{
 	                return onError(exchange, HttpStatus.BAD_REQUEST);
 	            return webClient.build()
 	                    .post()
-	                    .uri("http://auth-service/auth/validate?token=" + chunks[1])
+	                    .uri("http://ms_auth_service/auth/validate?token=" + chunks[1])
 	                    .retrieve().bodyToMono(TokenDto.class)
 	                    .map(t -> {
 	                        t.getToken();
