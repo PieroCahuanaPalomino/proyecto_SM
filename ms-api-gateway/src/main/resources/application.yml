@@ -1,0 +1,37 @@
+server:
+  port: 8090
+  
+spring:
+  application:
+    name: ms-api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: ms-auth-service
+          uri: lb://ms-auth-service
+          predicates:
+            - Path=/auth/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - AuthFilter     
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka
+    initial-instance-info-replication-interval-seconds: 5
+    registry-fetch-interval-seconds: 5
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+    hostname: localhost
+    
+
+    
