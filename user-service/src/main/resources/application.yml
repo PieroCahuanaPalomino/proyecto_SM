@@ -1,16 +1,10 @@
 server:
-  port : 8001
-  
+  port : 0
+
 spring:
   application:
-    name: ms_auth_service
-#  cloud:
-#    config:
-#      enabled: true
-#      uri: http://localhost:8081
-jwt:
-  secret: secret
-  
+    name: user-service
+
 eureka:
   client:
     enabled: true

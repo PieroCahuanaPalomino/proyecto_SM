@@ -11,15 +11,19 @@ spring:
           enabled: true
       routes:
         - id: ms_prueba_seguridad
-          uri: lb://ms_prueba_seguridad
+          uri: http://localhost:8098
           predicates:
             - Path=/prueba/**
           filters:
             - AuthFilter
         - id: ms_auth_service
-          uri: lb://ms_auth_service
+          uri: http://localhost:8001
           predicates:
-            - Path=/auth/**    
+            - Path=/auth/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**     
 eureka:
   client:
     enabled: true

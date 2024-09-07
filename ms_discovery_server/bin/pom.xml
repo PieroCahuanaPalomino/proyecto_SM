@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.proyect.library</groupId>
-	<artifactId>Discovery_server</artifactId>
+	<artifactId>ms_discovery_server</artifactId>
 	<version>1.0.0</version>
 	<name>Discovery_server</name>
 	<description>Demo project for Spring Boot</description>

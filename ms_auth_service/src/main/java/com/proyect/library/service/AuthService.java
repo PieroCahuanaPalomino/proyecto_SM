@@ -25,7 +25,7 @@ public class AuthService {
 	
 	public AuthUser save(AuthUserDto dto) {
 		Optional<AuthUser> user = authUserRepository.findByUsername(dto.getUsername());
-		if(!user.isPresent()) {
+		if(user.isPresent()) {
 			return null;
 		}
 		
@@ -53,7 +53,7 @@ public class AuthService {
 			return null;
 		}
 		String username = jwtProvider.getUserNameFromToken(token);
-		if(authUserRepository.findByUsername(username).isPresent()) {
+		if(!authUserRepository.findByUsername(username).isPresent()) {
 			return null;
 		}
 		return new TokenDto(token);
