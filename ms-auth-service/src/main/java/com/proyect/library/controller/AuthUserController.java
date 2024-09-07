@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.library.dto.AuthUserDto;
+import com.proyect.library.dto.NewUserDto;
+import com.proyect.library.dto.RequestDto;
 import com.proyect.library.dto.TokenDto;
 import com.proyect.library.entity.AuthUser;
 import com.proyect.library.service.AuthService;
@@ -29,8 +31,8 @@ public class AuthUserController {
 	}
 	
 	@PostMapping("/validate")
-	public ResponseEntity<TokenDto> validate(@RequestParam String token){
-		TokenDto tokenDto = authService.validate(token);
+	public ResponseEntity<TokenDto> validate(@RequestParam String token, @RequestBody RequestDto dto){
+		TokenDto tokenDto = authService.validate(token, dto);
 		if(tokenDto == null) {
 			 return ResponseEntity.badRequest().build();
 		}
@@ -38,7 +40,7 @@ public class AuthUserController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<AuthUser> create(@RequestBody AuthUserDto dto){
+	public ResponseEntity<AuthUser> create(@RequestBody NewUserDto dto){
 		AuthUser authUser = authService.save(dto);
 		if(authUser == null) {
 			return ResponseEntity.badRequest().build();

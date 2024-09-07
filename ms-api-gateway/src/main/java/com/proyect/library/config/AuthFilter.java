@@ -14,7 +14,7 @@ import com.proyect.library.dto.TokenDto;
 
 import lombok.extern.log4j.Log4j2;
 import reactor.core.publisher.Mono;
-
+import com.proyect.library.dto.RequestDto;
 @Log4j2
 @Component
 public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config>{
@@ -28,8 +28,6 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config>{
 	@Override
 	public GatewayFilter apply(Config config) {
 	    return (((exchange, chain) -> {
-            log.info("IMPRIMIENDO EXCHANGE: ", exchange);
-            log.info("IMPRIMIENDO CHAIN: ", chain);
 	        if(!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
 	            return onError(exchange, HttpStatus.BAD_REQUEST);
 	        }
@@ -46,6 +44,7 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config>{
 	        return webClient.build()
 	            .post()
 	            .uri("http://ms-auth-service/auth/validate?token=" + chunks[1])
+                .bodyValue(new RequestDto(exchange.getRequest().getPath().toString(), exchange.getRequest().getMethod().toString()))
 	            .retrieve()
 	            .bodyToMono(TokenDto.class)
 	            .map(t -> {
