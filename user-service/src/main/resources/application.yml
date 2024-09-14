@@ -4,7 +4,15 @@ server:
 spring:
   application:
     name: user-service
-
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    password: 77810931
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: SYSTEM
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
 eureka:
   client:
     enabled: true
