@@ -1,29 +1,33 @@
 package com.proyect.library.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Getter
 @Setter
 @Entity
-public class AuthUser {
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "auth_user_seq")
-    @SequenceGenerator(name = "auth_user_seq", sequenceName = "auth_user_seq", allocationSize = 1)
-    private int id;
-    private String username;
-    private String password;
-    private String role;
+@Table(name = "roles")
+public class RoleEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq")
+	@SequenceGenerator(name = "role_seq", sequenceName = "role_seq", allocationSize = 1)
+	private Long id;
+
+	@Enumerated(EnumType.STRING)
+	private ERole name;
 }
