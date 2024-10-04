@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: ms-auth-service
+    zipking: http://localhost:9411
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
     password: 77810931

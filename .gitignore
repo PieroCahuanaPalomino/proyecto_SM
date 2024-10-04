@@ -21,3 +21,5 @@
 *.dat
 *.properties
 *.png
+
+zipkin-server-3.4.1-exec.jar
