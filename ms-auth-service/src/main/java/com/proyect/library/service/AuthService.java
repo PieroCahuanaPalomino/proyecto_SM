@@ -8,45 +8,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.proyect.library.dto.AuthUserDto;
-import com.proyect.library.dto.RequestDto;
-import com.proyect.library.dto.TokenDto;
-import com.proyect.library.entity.UserEntity;
-import com.proyect.library.entity.RoleEntity;
-import com.proyect.library.entity.ERole;
+import com.proyect.library.model.dto.AuthUserDto;
+import com.proyect.library.model.dto.RequestDto;
+import com.proyect.library.model.dto.TokenDto;
+import com.proyect.library.model.dto.UserDto;
+import com.proyect.library.model.entity.ERole;
+import com.proyect.library.model.entity.RoleEntity;
+import com.proyect.library.model.entity.UserEntity;
+import com.proyect.library.model.mapper.user.UserMapper;
 import com.proyect.library.repository.AuthUserRepository;
 import com.proyect.library.security.JwtProvider;
 import com.proyect.library.security.RouteValidator;
 
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
 public class AuthService {
 	@Autowired
-	RouteValidator routeValidator;
+	private RouteValidator routeValidator;
 	
 	@Autowired
-	AuthUserRepository authUserRepository;
+	private AuthUserRepository authUserRepository;
 	
 	@Autowired
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	JwtProvider jwtProvider;
+	private JwtProvider jwtProvider;
 	
+    @Autowired
+    private UserMapper userMapper;
 	
-	public TokenDto login(AuthUserDto dto) {
-		Optional<UserEntity> user = authUserRepository.findByUsername(dto.getUsername());
-		if(!user.isPresent()) {
-			return null;
-		}
-		if(passwordEncoder.matches(dto.getPassword(), user.get().getPassword())) {
-			return new TokenDto(jwtProvider.createToken(user.get()));
-		}
-		return null;
-	}
+    public TokenDto login(AuthUserDto dto) {
+        Optional<UserEntity> userOptional = authUserRepository.findByUsername(dto.getUsername());
+        
+        // Comprobar si el usuario existe
+        if (!userOptional.isPresent()) {
+            return null; // O manejarlo de otra manera si decides hacerlo
+        }
+        
+        UserEntity user = userOptional.get();
+        
+        // Verificar la contraseña
+        if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+            return null; // O manejarlo de otra manera si decides hacerlo
+        }
+        
+        // Convertir UserEntity a UserDto usando el mapper
+        UserDto userDto = userMapper.entityToDto(user);
+
+        // Crear el token usando UserDto
+        return new TokenDto(jwtProvider.createToken(userDto));
+    }
+
 	
 	public TokenDto validate(String token, RequestDto dto) {
 		if(!jwtProvider.validate(token)) {

@@ -1,4 +1,4 @@
-package com.proyect.library.entity;
+package com.proyect.library.model.entity;
 
 import java.util.Set;
 

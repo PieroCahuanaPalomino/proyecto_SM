@@ -1,4 +1,4 @@
-package com.proyect.library.dto;
+package com.proyect.library.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter
 @Setter
-public class AuthUserDto {
-	private String username;
-	private String password;
+@Getter
+public class TokenDto {
+	private String token;
 }

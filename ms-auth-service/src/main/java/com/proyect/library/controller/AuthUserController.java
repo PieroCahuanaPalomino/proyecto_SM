@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyect.library.dto.AuthUserDto;
-import com.proyect.library.dto.RequestDto;
-import com.proyect.library.dto.TokenDto;
+import com.proyect.library.model.dto.AuthUserDto;
+import com.proyect.library.model.dto.RequestDto;
+import com.proyect.library.model.dto.TokenDto;
 import com.proyect.library.service.AuthService;
 
 @RestController

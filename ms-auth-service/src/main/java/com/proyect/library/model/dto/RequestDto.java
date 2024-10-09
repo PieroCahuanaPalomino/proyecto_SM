@@ -1,4 +1,4 @@
-package com.proyect.library.dto;
+package com.proyect.library.model.dto;
 
 import java.util.List;
 

@@ -10,9 +10,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.proyect.library.entity.ERole;
-import com.proyect.library.entity.RoleEntity;
-import com.proyect.library.entity.UserEntity;
+import com.proyect.library.model.entity.ERole;
+import com.proyect.library.model.entity.RoleEntity;
+import com.proyect.library.model.entity.UserEntity;
 import com.proyect.library.repository.AuthUserRepository;
 
 @EnableDiscoveryClient

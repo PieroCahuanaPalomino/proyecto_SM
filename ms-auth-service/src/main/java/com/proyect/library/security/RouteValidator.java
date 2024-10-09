@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import com.proyect.library.dto.RequestDto;
-import com.proyect.library.entity.ERole;
+import com.proyect.library.model.dto.RequestDto;
+import com.proyect.library.model.entity.ERole;
 
 import lombok.Getter;
 import lombok.Setter;
