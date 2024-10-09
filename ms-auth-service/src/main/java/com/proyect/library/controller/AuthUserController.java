@@ -22,18 +22,12 @@ public class AuthUserController {
 	@PostMapping("/login")
 	public ResponseEntity<TokenDto> login(@RequestBody AuthUserDto dto){
 		TokenDto tokenDto = authService.login(dto);
-		if(tokenDto == null){
-			return ResponseEntity.badRequest().build();
-		}
 		return ResponseEntity.ok(tokenDto);
 	}
 	
 	@PostMapping("/validate")
 	public ResponseEntity<TokenDto> validate(@RequestParam String token, @RequestBody RequestDto dto){
 		TokenDto tokenDto = authService.validate(token, dto);
-		if(tokenDto == null) {
-			return ResponseEntity.badRequest().build();
-		}
 		return ResponseEntity.ok(tokenDto);
 	}
 	

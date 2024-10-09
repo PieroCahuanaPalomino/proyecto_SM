@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.proyect.library.configuration.Error.ResourceNotFoundException;
 import com.proyect.library.model.dto.AuthUserDto;
 import com.proyect.library.model.dto.RequestDto;
 import com.proyect.library.model.dto.TokenDto;
@@ -45,14 +46,14 @@ public class AuthService {
         
         // Comprobar si el usuario existe
         if (!userOptional.isPresent()) {
-            return null; // O manejarlo de otra manera si decides hacerlo
+            throw new ResourceNotFoundException("User not found with username: " + dto.getUsername());
         }
         
         UserEntity user = userOptional.get();
         
         // Verificar la contraseña
         if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-            return null; // O manejarlo de otra manera si decides hacerlo
+            throw new IllegalArgumentException("Invalid password for user: " + dto.getUsername());
         }
         
         // Convertir UserEntity a UserDto usando el mapper
@@ -66,20 +67,20 @@ public class AuthService {
 	public TokenDto validate(String token, RequestDto dto) {
 		if(!jwtProvider.validate(token)) {
 			log.info("AQUI ENTRA 1");
-            return null; // Manejo de errores a mejorar
+            throw new IllegalArgumentException("Invalid token");
 		}
 		String username = jwtProvider.getUserNameFromToken(token);
         Optional<UserEntity> user = authUserRepository.findByUsername(username);
         if (!user.isPresent()) {
 			log.info("AQUI ENTRA 2");
-            return null; // Manejo de errores a mejorar
+            throw new ResourceNotFoundException("User not found with username: " + username);
         }
 
 		// Comprobar roles del usuario y acceso a la ruta
         Set<ERole> userRoles = user.get().getRoles().stream().map(RoleEntity::getName).collect(Collectors.toSet());
         if (!routeValidator.isAuthorized(dto.getMethod(), dto.getUri(), userRoles)) {
 			log.info("AQUI ENTRA 3");
-            return null; // No autorizado
+            throw new SecurityException("User not authorized");
         }
 		return new TokenDto(token);
 	}
