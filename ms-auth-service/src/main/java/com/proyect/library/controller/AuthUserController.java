@@ -44,4 +44,10 @@ public class AuthUserController {
         throw new IllegalArgumentException("Authorization header is invalid");
     }
 	
+	@GetMapping("/secured")
+	public ResponseEntity<String> secured() {
+     
+            return ResponseEntity.ok("ACCESO");
+        
+    }
 }

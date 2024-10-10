@@ -2,6 +2,9 @@ server:
   port : ${PORT:${SERVER_PORT:0}}
   
 spring:
+  security:
+    name: piero
+    password: piero
   application:
     name: ms-auth-service
     zipking: http://localhost:9411
