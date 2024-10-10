@@ -40,13 +40,13 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config>{
 	        if(chunks.length != 2 || !chunks[0].equals("Bearer")) {
 	            return onError(exchange, HttpStatus.BAD_REQUEST);
 	        }
-
 	        return webClient.build()
-	            .post()
-	            .uri("http://ms-auth-service/auth/validate?token=" + chunks[1])
-                .bodyValue(new RequestDto(exchange.getRequest().getPath().toString(), exchange.getRequest().getMethod().toString()))
-	            .retrieve()
-	            .bodyToMono(TokenDto.class)
+	        	    .post()
+	        	    .uri("http://ms-auth-service/auth/validate")
+	        	    .header(HttpHeaders.AUTHORIZATION, "Bearer " + chunks[1]) // Usar la cabecera
+	        	    .bodyValue(new RequestDto(exchange.getRequest().getPath().toString(), exchange.getRequest().getMethod().toString()))
+	        	    .retrieve()
+	        	    .bodyToMono(TokenDto.class)
 	            .map(t -> {
 	                // Puedes añadir más lógica aquí si es necesario
 	                return exchange;

@@ -10,6 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
+
 @Configuration
 public class SecurityConfig {
 	@Bean
@@ -17,10 +18,12 @@ public class SecurityConfig {
 			throws Exception {
 		
 		return httpSecurity
-		.csrf(config -> config.disable())
-		.authorizeHttpRequests(auth -> {
-			auth.anyRequest().permitAll(); // Requiere autenticación para cualquier otra solicitud
-		})
-		.build();
+		        .csrf(config -> config.disable())
+		        .authorizeHttpRequests(auth -> {
+		            auth.requestMatchers("/auth/login").permitAll(); // Permitir acceso al login
+		            auth.requestMatchers("/auth/validate").permitAll(); // Proteger validate
+		            auth.anyRequest().permitAll(); // Permitir cualquier otra solicitud
+		        })
+		        .build();
 	}
 }
