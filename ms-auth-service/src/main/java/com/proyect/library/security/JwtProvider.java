@@ -57,7 +57,7 @@ public class JwtProvider {
 	        try {
 	            return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().get("username", String.class);
 	        } catch (Exception e) {
-	            return null; // Manejo de errores
+                    throw new IllegalArgumentException("Invalid token or unable to extract username"); // Lanzar excepción
 	        }
 	}
 }
