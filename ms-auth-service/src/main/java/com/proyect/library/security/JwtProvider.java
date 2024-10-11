@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.proyect.library.model.dto.RequestDto;
-import com.proyect.library.model.dto.UserDto;
+import com.proyect.library.model.dto.UserResponseDto;
 import com.proyect.library.model.entity.UserEntity;
 
 import io.jsonwebtoken.Jwts;
@@ -29,7 +29,7 @@ public class JwtProvider {
 		secret = Base64.getEncoder().encodeToString(secret.getBytes());
 	}
 	
-	public String createToken(UserDto  user) {
+	public String createToken(UserResponseDto  user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", user.getUsername());
         claims.put("roles", user.getRoles());

@@ -1,4 +1,4 @@
-package com.proyect.library.dto;
+package com.proyect.library.model.dto;
 
 import java.util.Set;
 
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class CreateUserDTO {
+public class CreateUserRequestDto {
 	@Email
 	@NotBlank
 	private String email;

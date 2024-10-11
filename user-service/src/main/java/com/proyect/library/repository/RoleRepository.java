@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.proyect.library.entity.ERole;
-import com.proyect.library.entity.RoleEntity;
+import com.proyect.library.model.entity.ERole;
+import com.proyect.library.model.entity.RoleEntity;
 
 
 @Repository

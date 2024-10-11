@@ -14,7 +14,7 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class UserDto {
+public class UserResponseDto {
     private String username;
     private String email;
     private Set<String> roles; // Usar Set en lugar de List

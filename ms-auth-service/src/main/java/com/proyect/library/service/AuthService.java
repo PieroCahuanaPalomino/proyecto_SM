@@ -12,7 +12,7 @@ import com.proyect.library.configuration.Error.ResourceNotFoundException;
 import com.proyect.library.model.dto.AuthUserDto;
 import com.proyect.library.model.dto.RequestDto;
 import com.proyect.library.model.dto.TokenDto;
-import com.proyect.library.model.dto.UserDto;
+import com.proyect.library.model.dto.UserResponseDto;
 import com.proyect.library.model.entity.ERole;
 import com.proyect.library.model.entity.RoleEntity;
 import com.proyect.library.model.entity.UserEntity;
@@ -57,7 +57,7 @@ public class AuthService {
         }
         
         // Convertir UserEntity a UserDto usando el mapper
-        UserDto userDto = userMapper.entityToDto(user);
+        UserResponseDto userDto = userMapper.entityToDto(user);
 
         // Crear el token usando UserDto
         return new TokenDto(jwtProvider.createToken(userDto));

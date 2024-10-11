@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyect.library.dto.CreateUserDTO;
-import com.proyect.library.entity.UserEntity;
+import com.proyect.library.model.dto.CreateUserRequestDto;
+import com.proyect.library.model.dto.UserResponseDto;
+import com.proyect.library.model.entity.UserEntity;
 import com.proyect.library.service.UserService;
 
 import jakarta.validation.Valid;
@@ -26,29 +28,26 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/list")
-    public ResponseEntity<List<?>> getAll() {
-        List<UserEntity> users = userService.getAll();
-        if(users.isEmpty())
-            return ResponseEntity.noContent().build();
+    @GetMapping(value = "/list", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_VALUE })
+    public ResponseEntity<List<UserResponseDto>> getAll() {
+        List<UserResponseDto> users = userService.getAll();
         return ResponseEntity.ok(users);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") Long id) {
-        UserEntity user = userService.getUserById(id);
-        if(user == null)
-            return ResponseEntity.notFound().build();
+    @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_VALUE })
+    public ResponseEntity<UserResponseDto> getById(@PathVariable("id") Long id) {
+        UserResponseDto user = userService.getUserById(id);
         return ResponseEntity.ok(user);
     }
 
-   @PostMapping("/createUser")
-   public ResponseEntity<?> createUser(@Valid @RequestBody CreateUserDTO createUserDTO){
-	   return ResponseEntity.ok(userService.createUser(createUserDTO));
+   @PostMapping(value = "/createUser", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_VALUE })
+   public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody CreateUserRequestDto createUserDTO){
+	   UserResponseDto user = userService.createUser(createUserDTO);
+	   return ResponseEntity.ok(user);
    }
    
-	@DeleteMapping("/deleteUser/{id}")
-	public ResponseEntity<?> deleteUser(@PathVariable String id) {
+	@DeleteMapping(value = "/deleteUser/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_VALUE })
+	public ResponseEntity<UserResponseDto> deleteUser(@PathVariable Long id) {
 		return ResponseEntity.ok(userService.deleteUser(id));
 	}
 
