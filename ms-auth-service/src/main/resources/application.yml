@@ -3,8 +3,9 @@ server:
   
 spring:
   security:
-    name: piero
-    password: piero
+    user:
+      name: piero
+      password: piero
   application:
     name: ms-auth-service
     zipking: http://localhost:9411
@@ -18,7 +19,7 @@ spring:
       ddl-auto: update
     show-sql: true
 jwt:
-  secret: secret
+  secret: g9*2Pq#5B8^Dg!3X@2eR&z8W$uJ7fH!6
 
 admin-paths:
   paths:

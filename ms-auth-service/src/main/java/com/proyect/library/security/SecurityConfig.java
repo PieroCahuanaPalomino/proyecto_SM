@@ -22,6 +22,7 @@ public class SecurityConfig {
 		        .authorizeHttpRequests(auth -> {
 		            auth.requestMatchers("/auth/login").permitAll(); // Permitir acceso al login
 		            auth.requestMatchers("/auth/validate").permitAll(); // Proteger validate
+		            auth.requestMatchers("/auth/secured").authenticated();
 		            auth.anyRequest().permitAll(); // Permitir cualquier otra solicitud
 		        })
 		        .build();
