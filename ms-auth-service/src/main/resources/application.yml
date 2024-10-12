@@ -9,6 +9,13 @@ spring:
   application:
     name: ms-auth-service
     zipking: http://localhost:9411
+  boot:
+    admin:
+      client:
+        enabled: true
+        url: http://ms-sba-server:8086
+        username: ${SBA_SERVER_USERNAME:admin}
+        password: ${SBA_SERVER_PASSWORD:admin}
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
     password: 77810931
@@ -49,6 +56,15 @@ admin-paths:
 #    -
 #      uri: "/useri/savecar/{1}[1-9]+[0-9]*"
 #      method: "POST"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always    
   
 eureka:
   client:
