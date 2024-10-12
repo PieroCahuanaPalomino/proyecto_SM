@@ -20,7 +20,24 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - AuthFilter     
+            - AuthFilter
+  boot:
+    admin:
+      client:
+        enabled: true
+        url: http://ms-sba-server:8086
+        username: ${SBA_SERVER_USERNAME:admin}
+        password: ${SBA_SERVER_PASSWORD:admin}
+        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+     
 eureka:
   client:
     enabled: true
