@@ -25,7 +25,7 @@ spring:
     admin:
       client:
         enabled: true
-        url: http://ms-sba-server:8086
+        url: http://localhost:8086
         username: ${SBA_SERVER_USERNAME:admin}
         password: ${SBA_SERVER_PASSWORD:admin}
         
