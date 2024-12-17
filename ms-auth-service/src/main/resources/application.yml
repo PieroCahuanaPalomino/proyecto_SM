@@ -2,10 +2,6 @@ server:
   port : ${PORT:${SERVER_PORT:0}}
   
 spring:
-  security:
-    user:
-      name: piero
-      password: piero
   application:
     name: ms-auth-service
     zipking: http://localhost:9411
@@ -16,15 +12,8 @@ spring:
         url: http://localhost:8086
         username: ${SBA_SERVER_USERNAME:admin}
         password: ${SBA_SERVER_PASSWORD:admin}
-  datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
-    password: 77810931
-    url: jdbc:oracle:thin:@localhost:1521:xe
-    username: SYSTEM
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+  profiles:
+    active: local
 jwt:
   secret: g9*2Pq#5B8^Dg!3X@2eR&z8W$uJ7fH!6
 

@@ -1,10 +1,17 @@
 server:
-  port: 8090
+  port : ${PORT:${SERVER_PORT:0}}
   
 spring:
   application:
     name: ms-api-gateway
     zipking: http://localhost:9411
+  boot:
+    admin:
+      client:
+        enabled: true
+        url: http://localhost:8086
+        username: ${SBA_SERVER_USERNAME:admin}
+        password: ${SBA_SERVER_PASSWORD:admin}
   cloud:
     gateway:
       discovery:
@@ -21,13 +28,6 @@ spring:
             - Path=/user/**
           filters:
             - AuthFilter
-  boot:
-    admin:
-      client:
-        enabled: true
-        url: http://ms-sba-server:8086
-        username: ${SBA_SERVER_USERNAME:admin}
-        password: ${SBA_SERVER_PASSWORD:admin}
         
 management:
   endpoints:
@@ -37,7 +37,7 @@ management:
   endpoint:
     health:
       show-details: always
-     
+
 eureka:
   client:
     enabled: true
@@ -52,4 +52,8 @@ eureka:
     hostname: localhost
     
 
-    
+logging:
+  level:
+    org.springframework: DEBUG
+    org.springframework.cloud: DEBUG
+    com.tu.paquete: DEBUG  # Ajusta según sea necesario

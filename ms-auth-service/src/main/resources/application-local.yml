@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1522:FREE  # Aquí se usa el Service Name en lugar de SID
+    username: SYSTEM
+    password: 77810931
+  jpa:
+    hibernate:
+      ddl-auto: update  # Esto configura Hibernate para manejar la creación y actualización de esquemas
+    show-sql: true  # Esto es útil para ver las consultas SQL generadas

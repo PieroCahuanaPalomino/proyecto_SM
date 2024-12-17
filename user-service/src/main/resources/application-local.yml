@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1522:FREE  # Utilizando el Service Name
+    username: SYSTEM
+    password: 77810931
+  jpa:
+    hibernate:
+      ddl-auto: update  # Hibernate se encargará de la creación/actualización del esquema
+    show-sql: true  # Mostrar las consultas SQL generadas
+    properties:
+      hibernate.default_schema: "C##MI_USUARIO"  # Aquí debes poner el esquema deseado

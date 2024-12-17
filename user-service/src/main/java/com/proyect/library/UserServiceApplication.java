@@ -30,7 +30,8 @@ public class UserServiceApplication {
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
-	
+
+	/*
 	@Bean
 	CommandLineRunner init() {
 		return args -> {
@@ -57,4 +58,5 @@ public class UserServiceApplication {
 			userRepository.save(userEntity3);
 		};
 	}
+	 */
 }
