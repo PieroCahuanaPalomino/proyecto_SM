@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "roles")
+@Table(name = "roles", schema = "C##MI_USUARIO")
 public class RoleEntity {
 
 	@Id
