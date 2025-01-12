@@ -25,7 +25,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "users", schema = "C##MI_USUARIO")
+@Table(name = "users")
 public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")

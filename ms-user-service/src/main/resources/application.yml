@@ -1,9 +1,9 @@
 server:
-  port : 8090
-  
+  port : ${PORT:${SERVER_PORT:0}}
+
 spring:
   application:
-    name: ms-api-gateway
+    name: ms-user-service
     zipking: http://localhost:9411
   boot:
     admin:
@@ -12,23 +12,8 @@ spring:
         url: http://localhost:8086
         username: ${SBA_SERVER_USERNAME:admin}
         password: ${SBA_SERVER_PASSWORD:admin}
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        - id: ms-auth-service
-          uri: lb://ms-auth-service
-          predicates:
-            - Path=/auth/**
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/user/**
-          filters:
-            - AuthFilter
-        
+  profiles:
+    active: local
 management:
   endpoints:
     web:
@@ -36,7 +21,7 @@ management:
         include: "*"
   endpoint:
     health:
-      show-details: always
+      show-details: always      
 
 eureka:
   client:
@@ -50,10 +35,3 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 5
     hostname: localhost
-    
-
-logging:
-  level:
-    org.springframework: DEBUG
-    org.springframework.cloud: DEBUG
-    com.tu.paquete: DEBUG  # Ajusta según sea necesario

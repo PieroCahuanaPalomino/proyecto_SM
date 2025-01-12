@@ -1,37 +1,26 @@
 package com.proyect.library;
 
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.proyect.library.model.entity.ERole;
-import com.proyect.library.model.entity.RoleEntity;
-import com.proyect.library.model.entity.UserEntity;
-import com.proyect.library.repository.UserRepository;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class UserServiceApplication {
+public class MsUserServiceApplication {
 	
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserServiceApplication.class, args);
+		SpringApplication.run(MsUserServiceApplication.class, args);
 	}
-	
+
+	/*
 	@Autowired
 	UserRepository userRepository;
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
-	/*
+
 	@Bean
 	CommandLineRunner init() {
 		return args -> {
@@ -58,5 +47,5 @@ public class UserServiceApplication {
 			userRepository.save(userEntity3);
 		};
 	}
-	 */
+    */
 }

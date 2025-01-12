@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.proyect.library</groupId>
-	<artifactId>user-service</artifactId>
-	<version>1.0.0</version>
-	<name>user-service</name>
-	<description>MS dedicated to eureka</description>
+	<artifactId>ms-inventory-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ms-inventory-service</name>
+	<description>ms-inventory-service</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -88,7 +88,7 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc11</artifactId>
@@ -106,16 +106,16 @@
 			<groupId>io.zipkin.reporter2</groupId>
 			<artifactId>zipkin-reporter-brave</artifactId>
 		</dependency>
-				<dependency>
-		    <groupId>org.mapstruct</groupId>
-		    <artifactId>mapstruct</artifactId>
-		    <version>1.5.3.Final</version>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.5.3.Final</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.mapstruct</groupId>
-		    <artifactId>mapstruct-processor</artifactId>
-		    <version>1.5.3.Final</version>
-		    <scope>provided</scope>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>1.5.3.Final</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.codecentric</groupId>
