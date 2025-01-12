@@ -1,0 +1,15 @@
+[Frontend] 
+    |
+    | (Consulta libros disponibles y realiza préstamo)
+    v
+[API Gateway]
+    |
+    v
+[Microservicio de Catálogo] -- (Síncrono) --> [Microservicio de Inventario] -- Consulta disponibilidad
+    | (Devuelve lista de libros disponibles)
+    v
+[Microservicio de Préstamos] -- (Síncrono) --> [Microservicio de Inventario] -- Actualiza estado a "Prestado"
+    |
+    | (Emite evento "Préstamo Realizado")
+    v
+[Microservicio de Notificaciones] -- (Asíncrono) --> Envía recordatorio de devolución al usuario
