@@ -2,7 +2,7 @@ spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521:xe  # Utilizando el Service Name
-    username: SYSTEM
+    username: C##ORACLE
     password: 77810931
   jpa:
     hibernate:

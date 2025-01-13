@@ -11,12 +11,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "RESOURCE_AVAILABILITY")
+@Table(name = "RESOURCE_AVAILABILITY_BOOKS")
 public class ResourceAvailabilityEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RESOURCE_AVAILABILITY_SEQ")
-    @SequenceGenerator(name = "RESOURCE_AVAILABILITY_SEQ", sequenceName = "RESOURCE_AVAILABILITY_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RESOURCE_AVAILABILITY_BOOKS_SEQ")
+    @SequenceGenerator(name = "RESOURCE_AVAILABILITY_BOOKS_SEQ", sequenceName = "RESOURCE_AVAILABILITY_BOOKS_SEQ", allocationSize = 1)
     @Column(name = "AVAILABILITY_ID")
     private Long id;
 
